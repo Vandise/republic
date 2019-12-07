@@ -13,6 +13,7 @@ typedef struct WordArrayStruct {
 
 typedef struct WordStruct {
   char *value;
+  int position;
   struct WordStruct *next;
 } Word;
 

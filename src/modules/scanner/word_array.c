@@ -21,6 +21,7 @@ void add_word(WordArray* arr, char *value) {
   if (arr->root == NULL) {
     arr->root = init_word(value);
     arr->current_word = arr->root;
+    arr->current_word->position = arr->count;
     arr->count += 1;
     return;
   }
@@ -31,6 +32,7 @@ void add_word(WordArray* arr, char *value) {
 
   arr->current_word->next = init_word(value);
   arr->current_word = arr->current_word->next;
+  arr->current_word->position = arr->count;
   arr->count += 1;
 }
 
