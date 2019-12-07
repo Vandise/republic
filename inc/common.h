@@ -10,6 +10,7 @@
 #define PROJECT_MEMORY_DEBUG 1
 #define PROJECT_MEMORY_DEBUG_VERBOSE 1
 #define PROJECT_OUTPUT_VERBOSE 0
+#define EOF_CHAR '\x7f'
 
 typedef enum {
     FALSE, TRUE,
