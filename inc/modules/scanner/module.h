@@ -2,6 +2,7 @@
 #define _SCANNER_MODULEH 1
 
 #include "common.h"
+#include "word_array.h"
 
 #define CHAR_CODE(scanner) scanner->char_table[scanner->current_char]
 
