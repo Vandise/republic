@@ -1,1 +1,1 @@
-Cat dog's      $0.00 hyphen-nated under_scored
+Cat dog's      $10 hyphen-nated under_scored

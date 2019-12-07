@@ -21,10 +21,7 @@ static void populate_char_table(Scanner *scanner) {
   int ch;
 
   for (ch = 0;   ch < 256;  ++ch) scanner->char_table[ch] = SPECIAL;
-  //
-  // ignore money/stats/digits for the time being
-  //
-  //for (ch = '0'; ch <= '9'; ++ch) scanner->char_table[ch] = DIGIT;
+  for (ch = '0'; ch <= '9'; ++ch) scanner->char_table[ch] = DIGIT;
   for (ch = 'A'; ch <= 'Z'; ++ch) scanner->char_table[ch] = UPPERCASE_LETTER;
   for (ch = 'a'; ch <= 'z'; ++ch) scanner->char_table[ch] = LETTER;
   scanner->char_table['\''] = APOSTROPHE;
@@ -35,7 +32,7 @@ static void populate_char_table(Scanner *scanner) {
 }
 
 void skip_specials(Scanner* scanner) {
-  while(scanner->current_char == ' ' || CHAR_CODE(scanner) == SPECIAL) {
+  while(scanner->current_char == ' ' || CHAR_CODE(scanner) == SPECIAL || CHAR_CODE(scanner) == WORD_TERMINATOR) {
     get_character(scanner);
   }
 }
@@ -73,7 +70,8 @@ void get_word(Scanner* scanner) {
     CHAR_CODE(scanner) == UPPERCASE_LETTER ||
     CHAR_CODE(scanner) == UNDERSCORE ||
     CHAR_CODE(scanner) == APOSTROPHE ||
-    CHAR_CODE(scanner) == HYPHEN) {
+    CHAR_CODE(scanner) == HYPHEN ||
+    CHAR_CODE(scanner) == DIGIT) {
 
     *(scanner->wordp)++ = scanner->current_char;
     get_character(scanner);
